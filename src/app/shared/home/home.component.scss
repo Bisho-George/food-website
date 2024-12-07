@@ -1,0 +1,75 @@
+.header-row {
+  background-color: #009247;
+  border-radius: 15px;
+  padding: 1rem;
+}
+
+@media screen and (max-width: 768px) and (min-width: 320px) {
+  .header-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  img {
+    width: 20rem !important;
+  }
+
+}
+
+.home-header {
+  color: white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.username-text {
+  color: #DFE0E0;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typewriter 2s steps(13) infinite alternate,
+  blink 800ms steps(13) infinite normal;
+  border-right: 5px solid black;
+}
+
+// @keyframes typewriter {
+//   from {
+//     width: 0%;
+//   }
+
+//   to {
+//     width: 50%;
+//   }
+// }
+
+// @keyframes blink {
+//   from {
+//     border-color: black;
+//   }
+
+//   to {
+//     border-color: transparent;
+//   }
+// }
+@keyframes wave {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+}
+
+.wave-container {
+  display: inline-flex;
+}
+
+.wave-char {
+  display: inline-block;
+  font-family: inherit;
+  font-size: inherit;
+  animation: wave 1s ease-in-out;
+  animation-delay: 0s;
+}

@@ -1,0 +1,10 @@
+<section>
+  <div class="container">
+  <app-section-header title="Favourite" subTitle="recipes"></app-section-header>
+    <div class="row mt-3">
+      <div *ngFor="let recipe of favRecipes" class="col-md-4 mb-sm-3">
+        <app-recipe-item (getRecipes)="getFavoriteRecipes()" [favRecipe]="recipe"></app-recipe-item>
+      </div>
+    </div>
+  </div>
+</section>

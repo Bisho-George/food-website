@@ -1,0 +1,57 @@
+@import '../../../../../styles.scss';
+
+.mat-form-field.custom-gray {
+  --mat-form-field-underline-color: mat.get-color-from-palette($app-gray);
+  --mat-form-field-label-color: mat.get-color-from-palette($app-gray);
+}
+image-cropper {
+  display: block;
+  max-width: 100%;
+  margin: auto;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  margin: 20px auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.image-input {
+  background-color: #F1FFF0;
+  width: 100%;
+  text-align: center;
+  height: 14vh;
+  margin: 0 auto;
+  border: 1px dashed #009247;
+  border-radius: 8px;
+  padding: 1.4rem;
+  position: relative; // Ensure relative positioning for drag-and-drop effects
+  transition: opacity 0.3s, background-color 0.3s; // Smooth transition for drag events
+  i {
+    margin-bottom: 0.7rem;
+    font-size: 1.7rem;
+    color: #4F4F4F;
+  }
+  p {
+    margin: 0;
+    color: #4F4F4F;
+    cursor: pointer;
+  }
+
+  &.dragging {
+    opacity: 0.5; // Reduce opacity when dragging
+    background-color: #e6fbe5; // Subtle highlight during drag
+  }
+  mat-icon {
+    width: 100%;
+    color: $main-color;
+  }
+
+  input[type='file'] {
+    display: none; // Hide the file input
+  }
+}
+
+

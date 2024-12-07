@@ -1,0 +1,30 @@
+section {
+  width: 30rem;
+  height: 20rem;
+  border-radius: 16px;
+}
+
+.close-icon {
+  border: 2px solid #CC0000;
+  text-align: center;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #CC0000;
+  padding: .8rem;
+  transition: all .3s;
+  &:hover {
+    background-color: rgb(255, 223, 223);
+  }
+}
+
+input {
+    background: #F7F7F7;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    outline: none;
+    width: 100%;
+}
+

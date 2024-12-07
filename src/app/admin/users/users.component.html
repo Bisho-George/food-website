@@ -1,0 +1,98 @@
+<section>
+  <div class="container">
+    <app-section-header title="Users" subTitle="list"></app-section-header>
+    <div class=" mt-4 mb-2">
+      <div>
+        <h4 class="m-0">Users table details</h4>
+        <p>You can check all details</p>
+      </div>
+    </div>
+    <mat-card appearance="raised" class="mat-card">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-5">
+          <div class="input-group w-100 mb-4">
+            <span class="input-group-append d-flex align-items-center h-100 top-0">
+              <i class="fa fa-search"></i>
+            </span>
+            <input (keydown.enter)="getUsers()" [(ngModel)]="searchVal" class="form-control rounded-2 border"
+              placeholder="Search Here" type="text" id="example-search-input">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <mat-form-field [appearance]="'outline'" class="w-100">
+            <mat-label>Search criteria</mat-label>
+            <mat-select [(ngModel)]="criteria">
+              <mat-option [value]="criteria" *ngFor="let criteria of searchCriterias">{{criteria}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-2">
+          <mat-form-field [appearance]="'outline'" class="w-100">
+            <mat-label>Role</mat-label>
+            <mat-select [(ngModel)]="role" (selectionChange)="getUsers()">
+              <mat-option [value]="[1,2]">All</mat-option>
+              <mat-option [value]="[1]">Super admin</mat-option>
+              <mat-option [value]="[2]">System user</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+        <div class="col-md-2 h-100 ">
+          <button (click)="clearFilters()" class="border-0 mt-2 my-2 d-flex justify-content-center align-items-center p-2 rounded-circle">
+            <mat-icon>hide_source</mat-icon>
+          </button>
+        </div>
+      </div>
+      <table class="table overflow-y-scroll">
+        <thead>
+          <tr>
+            <th scope="col">Username</th>
+            <th scope="col">Image</th>
+            <th style="width: fit-content;" scope="col">Email</th>
+            <th scope="col">Country</th>
+            <th scope="col">Phone number</th>
+            <th scope="col">Role</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-start" *ngFor="let user of (tableResponse?.data || []); let isEven=even"
+            [class]="isEven ? 'bg-white' : 'bg-light'">
+            <td>{{user.userName}}</td>
+            <td>
+              <img width="75px" class="rounded-2" [src]="user.imagePath">
+              <ng-container *ngIf="user.imagePath === null">
+                <img width="100px" class="rounded-2" src="../../../assets/sidebar-logo.svg" alt="recipe image">
+              </ng-container>
+
+            </td>
+            <td class="p-0" style="width: fit-content;">{{user.email}} </td>
+            <td>{{user.country}}</td>
+            <td>{{user.phoneNumber}}</td>
+            <td>{{user.group.id === 1 ? 'Super admin' : 'System user'}}
+            </td>
+            <td class="text-center">
+              <button class="bg-transparent border border-0" mat-icon-button [matMenuTriggerFor]="menu"
+                aria-label="Example icon-button with a menu">
+                <mat-icon>more_horiz</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" class=" rounded-4">
+                <button mat-menu-item (click)="openViewUser(user)">
+                  <mat-icon class="text-success fw-lighter">visibility</mat-icon>
+                  <span>View</span>
+                </button>
+                <button mat-menu-item class="w-100 text-danger" (click)="openDeleteDialog(user)">
+                  <mat-icon class="text-danger fw-lighter">delete</mat-icon>
+                  <span>Delete</span>
+                </button>
+              </mat-menu>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <mat-paginator [length]="tableResponse?.totalNumberOfRecords" (page)="handlePageEvent($event)"
+        [pageSize]="pageSize" [pageIndex]="pageNumber" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+      </mat-paginator>
+    </mat-card>
+  </div>
+</section>

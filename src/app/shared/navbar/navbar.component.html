@@ -1,0 +1,48 @@
+<header class="container">
+  <div class="row">
+    <div class="col-md-8 col-sm-6">
+      <div class="input-group w-100">
+        <span class="input-group-append">
+          <i class="fa fa-search"></i>
+        </span>
+        <input class="form-control border-end-0 border rounded-pill" placeholder="Search Here" type="text"
+          id="example-search-input">
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-6">
+      <div class="d-flex align-items-center justify-content-end">
+        <div class="d-flex gap-3 align-items-center">
+          <ng-container *ngIf="user?.imagePath !== null">
+            <img class="rounded-pill" [src]="profileImage" alt="profile picture" width="40px" height="40px">
+          </ng-container>
+          <ng-container *ngIf="user?.imagePath === null || user?.imagePath === undefined">
+            <img src="../../../assets/profile-pic.svg" alt="profile-picture">
+          </ng-container>
+          <p class="m-0">{{user?.userName}}</p>
+        </div>
+        <div class="dropdown">
+          <button (click)="toggleMenu()" class="dropdown-toggle">
+            <i class="fa fa-angle-down mx-4"></i>
+          </button>
+          <div class="dropdown-menu" [@slideInOut]="isMenuOpen ? 'open' : 'closed'">
+            <a class="dropdown-item d-flex align-items-center" (click)="openProfile()">
+              <i class="fa fa-user"></i>
+              <span>Profile</span>
+            </a>
+            <ng-container *ngIf="isUser()">
+              <a routerLink="/dashboard/user/change-password" class="dropdown-item d-flex align-items-center">
+                <i class="fa-solid fa-unlock-keyhole"></i>
+                <span>Change password</span>
+              </a>
+            </ng-container>
+            <a class="dropdown-item d-flex align-items-center" (click)="onLogout()">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              <span>Logout</span>
+            </a>
+          </div>
+        </div>
+        <i class="fa-solid fa-bell"></i>
+      </div>
+    </div>
+  </div>
+</header>

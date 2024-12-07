@@ -1,0 +1,43 @@
+section {
+  width: 30rem;
+  border-radius: 16px;
+}
+
+.close-icon {
+  border: 2px solid #CC0000;
+  text-align: center;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #CC0000;
+  padding: .8rem;
+  transition: all .3s;
+  &:hover {
+    background-color: rgb(255, 223, 223);
+  }
+}
+
+.delete-category-image {
+  max-width: 150px;
+  height: auto;
+}
+
+.delete-desc-text {
+  color: #49494999;
+}
+
+.delete-button {
+  color: #CC0000;
+  background-color: white;
+  border: 1px solid #CC0000;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all .3s;
+  &:hover {
+    background-color: #CC0000;
+    color: white;
+  }
+}
+

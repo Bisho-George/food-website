@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="position-relative">
+    <img class="card-img-top object-fit-cover " width="200px" height="200px" [src]="favRecipe?.recipe?.imagePath"
+      alt="Card image cap">
+    <button (click)="deleteFromFav()">
+      <mat-icon>favorite</mat-icon>
+    </button>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{favRecipe?.recipe?.name}}</h5>
+    <p class="card-text">{{favRecipe?.recipe?.description}}</p>
+  </div>
+
+</div>

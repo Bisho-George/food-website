@@ -1,0 +1,20 @@
+<section>
+  <div class="container p-4 h-100">
+    <div class="row flex-column justify-content-between h-100">
+      <div class="d-flex justify-content-between align-items-center">
+        <h4 class="m-0">{{data.type}} Category</h4>
+        <mat-icon class="close-icon" mat-dialog-close="">close</mat-icon>
+      </div>
+      <div class="w-100">
+        <input [disabled]="data.type=== 'View'" type="text" placeholder="Category Name" [(ngModel)]="temporaryData.category.name">
+      </div>
+      <div class="row p-0">
+        <div class="col-md-4 ms-auto p-0">
+          <button class="button main-btn" (click)="closeDialog()">
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

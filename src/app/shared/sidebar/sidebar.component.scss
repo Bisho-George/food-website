@@ -1,0 +1,65 @@
+@import '../../../styles.scss';
+
+aside {
+  background-color: $sidebar-color;
+  height: 100vh;
+  border-top-right-radius: 58px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  width: 250px;
+  transform: scaleX(0.24);
+  transform-origin: left;
+  &:hover {
+    transform: scaleX(1);
+  }
+}
+
+.row > div {
+  padding: 0 !important;
+}
+
+.logo {
+  object-fit: cover;
+  object-position: center center;
+  padding: 0 !important;
+}
+
+.nav-list {
+  margin-top: 2rem;
+  padding: 0;
+  list-style: none;
+  li {
+    a {
+      text-decoration: none;
+      padding: 1rem 1rem;
+      display: block;
+      color: #B1B3BB;
+      font-weight: 400;
+      font-size: 1.2rem;
+      transition: all .3s;
+      margin: .3rem 0;
+      position: relative;
+      &:hover {
+        color: white;
+        font-weight: 500;
+      }
+      &.active {
+        color: white;
+        background-color: rgba(0, 146, 77, 0.102);
+        font-weight: 500;
+        &::after {
+          content: '';
+          position: absolute;
+          width: 4px;
+          height: 100%;
+          background-color: $main-color;
+          top: 0;
+          left: 0;
+        }
+      }
+    }
+    i {
+      color: white;
+      margin: 0 1rem;
+    }
+  }
+}

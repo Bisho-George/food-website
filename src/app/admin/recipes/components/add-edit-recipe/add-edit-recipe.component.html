@@ -1,0 +1,69 @@
+<section>
+  <div class="container">
+    <!-- <div class="row row-section">
+      <div class="col-md-6">
+        <h4>Fill the <span class="main-color">Recipes</span>!</h4>
+        <p>you can now fill the meals easily using the table and form , click here and sill it with the table !</p>
+      </div>
+      <div class="col-md-4 col-lg-3 d-flex align-items-center">
+        <button routerLink="/dashboard/admin/recipes"
+          class="button main-btn d-flex justify-content-center gap-3 align-items-center py-2 px-sm-3">
+          <span>Fill Recipes</span>
+          <i class="fa fa-arrow-right"></i></button>
+      </div>
+    </div> -->
+    <div class="row">
+      <mat-card appearance="raised" class="border border-0 py-3 px-5 overflow-hidden">
+        <form [formGroup]="recipeForm" (submit)="onSubmitRecipe()">
+          <mat-form-field [appearance]="'fill'" class="w-100">
+            <mat-label>Recipe name</mat-label>
+            <input matInput formControlName="name">
+          </mat-form-field>
+          <mat-form-field class="w-100">
+            <mat-label>Tag</mat-label>
+            <mat-select formControlName="tagId">
+              <mat-option *ngFor="let tag of tags" [value]="tag.id">{{tag.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field floatLabel="always" class="w-100">
+            <mat-label>Price</mat-label>
+            <input formControlName="price" matInput type="number" class="example-right-align" placeholder="0">
+            <span matTextSuffix>EGP</span>
+          </mat-form-field>
+          <mat-form-field class="w-100">
+            <mat-label>Categories</mat-label>
+            <mat-select multiple formControlName="categoriesIds">
+              <mat-option *ngFor="let cateogry of categories" [value]="cateogry.id">{{cateogry.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="w-100">
+            <mat-label>Description</mat-label>
+            <textarea formControlName="description" matInput></textarea>
+          </mat-form-field>
+          <div class="row image-input overflow-hidden" [ngClass]="croppedImage && 'p-0'" (dragover)="onDragOver($event)"
+            (dragleave)="onDragLeave($event)" (drop)="onDrop($event)" [class.dragging]="isDragging">
+            <ng-container *ngIf="!croppedImage">
+              <i class="fa-solid fa-arrow-up-from-bracket"></i>
+              <p (click)="image.click()" class="m-0">Drag & Drop or <span class="main-color">Choose a Item Image</span>
+                to
+                Upload</p>
+            </ng-container>
+            <input #image type="file" (change)="openCropDialog($event)" class="hidden-input" />
+            <div *ngIf="croppedImage">
+              <img width="100px" (click)="image.click()" [src]="croppedImage">
+            </div>
+          </div>
+          <div class="row justify-content-end mt-4">
+            <div class="col-md-3">
+              <button type="button" [routerLink]="recipe !== null ? '../../': '../'"
+                class="button secondary-btn">Cancel</button>
+            </div>
+            <div class="col-md-3">
+              <button type="submit" [disabled]="this.recipeForm.invalid" class="button main-btn">Save</button>
+            </div>
+          </div>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,10 @@
+@import 'styles/mixins.scss';
+
+section {
+  @include auth-section;
+}
+
+.auth-form {
+  @include auth-form;
+}
+

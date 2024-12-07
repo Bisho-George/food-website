@@ -1,0 +1,17 @@
+@import '../../../../auth/styles/mixins.scss';
+
+auth-form {
+  @include auth-form;
+}
+
+.backgound {
+  z-index: 1; /* Lower value for the background */
+}
+
+.profile-image {
+  z-index: 3; /* Higher value for the image */
+  position: relative; /* Ensure it's positioned in the stacking context */
+  border: 5px solid white; /* Optional: Add a border for better visibility */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow */
+}
+

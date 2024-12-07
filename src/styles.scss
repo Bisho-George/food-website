@@ -1,1 +1,123 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+// Define the primary, accent, and warn palettes
+$app-primary: mat.define-palette(mat.$indigo-palette);
+$app-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$app-warn: mat.define-palette(mat.$red-palette);
+$app-gray: mat.define-palette(mat.$gray-palette);
+
+// Create the theme
+$app-theme: mat.define-light-theme((
+  color: (
+    primary: $app-primary,
+    accent: $app-accent,
+    warn: $app-warn,
+    gray: $app-gray
+  ),
+));
+
+// Include global styles
+@include mat.core();
+@include mat.all-component-themes($app-theme);
+
+$main-color: #4AA35A;
+$text-color: #494949;
+$gray-color: rgba(73, 73, 73, 0.6);
+$text-field-color: #F7F7F7;
+$sidebar-color: #1F263E;
+
+.main-color {
+  color: $main-color;
+}
+
+.text-color {
+  color: $text-color;
+}
+
+.gray-color {
+  color: $gray-color;
+}
+
+.secondary-text-color {
+  color: #3A3A3D;
+}
+
+
+.textfield-background {
+  background-color: $text-field-color;
+}
+
+.button {
+  border-radius: 8px;
+  padding: .4rem 0px;
+  width: 100%;
+  border: none;
+  font-weight: 700;
+  transition: all .3s;
+  &:hover {
+    cursor: pointer;
+    opacity: .8;
+  }
+  &.main-btn {
+    background-color: $main-color;
+    color: white;
+  }
+  &.secondary-btn {
+    background-color: white;
+    color: $main-color;
+    border: 1px solid $main-color;
+    &:hover {
+      color: white;
+      background-color: $main-color;
+    }
+  }
+  &.cancel-btn {
+    background-color: white;
+    color: red;
+    border: 1px solid red;
+    &:hover {
+      color: white;
+      background-color: red;
+    }
+   
+  }
+  &:disabled {
+    background-color: $gray-color;
+  }
+}
+
+a {
+  cursor: pointer;
+}
+
+#shadow-host-companion {
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  top: 0;
+  left: 0;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.row-section {
+  margin-top: 1.5rem;
+  border-radius: 15px;
+  background-color: #F0FFEF;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+// input[type=number] {
+//   -moz-appearance: textfield;
+// }

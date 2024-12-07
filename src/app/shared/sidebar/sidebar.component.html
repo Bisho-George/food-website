@@ -1,0 +1,25 @@
+<aside class="overflow-hidden w-100 min-vh-100">
+  <div class="container">
+    <div class="row">
+      <div class="text-start mt-5">
+        <img src="../../../assets/sidebar-logo.svg" class="logo w-100" alt="food-logo">
+      </div>
+      <ul class="nav-list">
+        <ng-container *ngFor="let item of pages">
+          <li *ngIf="item.isActive">
+            <a class="ps-sm-0 ps-lg-4 d-flex justify-content-md-center justify-content-lg-start" [routerLink]="item.path" routerLinkActive="active" >
+              <span><i [class]="item.icon" class="text-center"></i></span>
+              <span class="d-sm-none d-lg-inline">{{item.text}}</span>
+            </a>
+          </li>
+        </ng-container>
+          <li class="mt-5" (click)="onLogout()">
+            <a class="ps-sm-0 pe-lg-3 ps-lg-4 d-flex justify-content-md-center justify-content-lg-start">
+              <span><i class="text-center fa-solid fa-right-from-bracket"></i></span>
+              <span class="d-sm-none d-lg-inline">Logout</span>
+            </a>
+          </li>
+      </ul>
+    </div>
+  </div>
+</aside>

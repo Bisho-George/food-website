@@ -1,0 +1,107 @@
+<section>
+  <div class="container">
+    <app-section-header title="Recipe" subTitle="items"></app-section-header>
+    <div class="d-flex justify-content-between mt-4 mb-2">
+      <div>
+        <h4 class="m-0">Recipe Table Details</h4>
+        <p>You can check all details</p>
+      </div>
+      <div>
+        <button routerLink="add" class="button main-btn p-3">Add new recipe</button>
+      </div>
+    </div>
+    <mat-card appearance="raised" class="mat-card">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-6">
+          <div class="input-group w-100 mb-4">
+            <span class="input-group-append d-flex align-items-center h-100">
+              <i class="fa fa-search"></i>
+            </span>
+            <input (keydown.enter)="getRecipes()" [(ngModel)]="name" class="form-control rounded-2 border"
+              placeholder="Search Here" type="text" id="example-search-input">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <mat-form-field [appearance]="'outline'" class="w-100">
+            <mat-label>Tag</mat-label>
+            <mat-select [(ngModel)]="tagId" (selectionChange)="getRecipes()">
+              <mat-option [value]="0">All</mat-option>
+              <mat-option *ngFor="let tag of tags" [value]="tag.id">{{tag.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-2">
+          <mat-form-field [appearance]="'outline'" class="w-100">
+            <mat-label>Category</mat-label>
+            <mat-select [(ngModel)]="categoryId" (selectionChange)="getRecipes()">
+              <mat-option [value]="0">All</mat-option>
+              <mat-option *ngFor="let category of categories" [value]="category.id">{{category.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-2 h-100 ">
+          <button (click)="clearFilters()" class="border-0 mt-2 my-2 d-flex justify-content-center align-items-center p-2 rounded-circle">
+            <mat-icon>hide_source</mat-icon>
+          </button>
+        </div>
+      </div>
+      <table class="table overflow-y-scroll overflow-x-scroll">
+        <thead>
+          <tr>
+            <th scope="col">Recipe name</th>
+            <th scope="col">Image</th>
+            <th scope="col">Price</th>
+            <th scope="col">Description</th>
+            <th scope="col">Tag</th>
+            <th scope="col">Category</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let recipe of (tableResponse?.data || []); let isEven=even"
+            [class]="isEven ? 'bg-white' : 'bg-light'">
+            <td>{{recipe.name}}</td>
+            <td>
+              <img width="75px" class="rounded-2" [src]="recipe.imagePath">
+              <ng-container *ngIf="recipe.imagePath === null">
+                <img width="100px" class="rounded-2" src="../../../assets/sidebar-logo.svg" alt="recipe image">
+              </ng-container>
+
+            </td>
+            <td>{{recipe.price}}</td>
+            <td>{{recipe.description | truncate:100}}</td>
+            <td>{{recipe.tag.name}}</td>
+            <td>
+              <span *ngFor="let category of recipe.category; let i = index">
+                {{category.name}}{{recipe.category.length - 1 !== i ? ', ' : ''}}
+              </span>
+            </td>
+            <td class="text-center">
+              <button class="bg-transparent border border-0" mat-icon-button [matMenuTriggerFor]="menu"
+                aria-label="Example icon-button with a menu">
+                <mat-icon>more_horiz</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" class=" rounded-4">
+                <button mat-menu-item>
+                  <mat-icon class="text-success fw-lighter">visibility</mat-icon>
+                  <span>View</span>
+                </button>
+                <button mat-menu-item class="mat-menu-item" routerLink="edit/{{recipe.id}}">
+                  <mat-icon class="text-success fw-lighter">edit_square</mat-icon>
+                  <span>Edit</span>
+                </button>
+                <button mat-menu-item class="w-100 text-danger" (click)="openDeleteDialog(recipe)">
+                  <mat-icon class="text-danger fw-lighter">delete</mat-icon>
+                  <span>Delete</span>
+                </button>
+              </mat-menu>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <mat-paginator [length]="tableResponse?.totalNumberOfRecords" (page)="handlePageEvent($event)"
+        [pageSize]="pageSize" [pageIndex]="pageNumber" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+      </mat-paginator>
+    </mat-card>
+  </div>
+</section>

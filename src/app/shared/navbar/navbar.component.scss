@@ -1,0 +1,96 @@
+header {
+  background-color: #f5f2f2;
+  padding: .8rem 1rem;
+  border-radius: 16px;
+  margin: 1.3rem auto;
+  .input-group {
+    width: 60%;
+  }
+}
+
+.fa-search {
+  color: #1F263E;
+}
+
+input {
+  position: relative;
+  padding-left: 2.8rem;
+  &::placeholder {
+    color: #C8C9CF;
+    font-weight: 500;
+  }
+}
+
+.input-group-append {
+  position: absolute;
+  z-index: 99;
+  top: .5rem;
+  left: 1rem;
+}
+
+.profile-div {
+  padding-right: .8rem;
+}
+
+.angle-down {
+  font-size: 22px;
+}
+
+.fa-bell {
+  position: relative;
+  font-size: 22px;
+  &::after {
+    // opacity: 0;
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #EC5252;
+    left: .6rem;
+    border: 1.5px solid white;
+  }
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  &::after {
+    display: none;
+  }
+}
+
+.dropdown-menu {
+  position: absolute;
+  display: block;
+  right: 0;
+  top: 2.5rem;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 0.5rem 0;
+  z-index: 1000;
+  min-width: 150px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+
+}
+
+.dropdown-item {
+  display: flex;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: #333;
+  font-size: 0.9rem;
+  gap: .8rem;
+  transition: all .3s;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(0, 146, 77, 0.102);
+}
+

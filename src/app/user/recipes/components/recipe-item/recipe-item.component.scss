@@ -1,0 +1,15 @@
+@import "../../../../../styles.scss";
+
+.card {
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+button {
+  display: flex;
+  position: absolute;
+  border-radius: .3rem;
+  top: 15px;
+  right: 15px;
+  background-color: white;
+  color: $main-color;
+}
